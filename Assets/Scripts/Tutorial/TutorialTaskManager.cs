@@ -16,7 +16,8 @@ public class TutorialTaskManager : MonoBehaviour
     }
 
     public TutorialTask currentTask = TutorialTask.None; // Tarea actual
-    public Text instructionsText; // UI para mostrar las instrucciones
+    public GameObject triggerMovimiento;
+    public GameObject triggerSalir;
 
     private bool taskCompleted = false;
 
@@ -70,16 +71,17 @@ public class TutorialTaskManager : MonoBehaviour
                 audio = Resources.Load<AudioClip>("Audios/Tutorial/Tarea 2 Tutorial");
                 AudioManager.instance.playAudio(audio);
                 
-                instructionsText.text = "Usa el joystick izquierdo para moverte hacia la zona verde.";
+                triggerMovimiento.SetActive(true);
                 break;
 
             case TutorialTask.GrabObject:
+
+                triggerMovimiento.SetActive(false);
 
                 audio = Resources.Load<AudioClip>("Audios/Tutorial/Tarea 2 Tutorial Completada");
                 audio2 = Resources.Load<AudioClip>("Audios/Tutorial/Tarea 3 Tutorial");
                 StartCoroutine(congratsAndNextTask(audio, audio2));
 
-                instructionsText.text = "Acércate a la linterna sobre la mesa y usa el gatillo para agarrarla.";
                 break;
 
             case TutorialTask.UseObject:
@@ -87,15 +89,15 @@ public class TutorialTaskManager : MonoBehaviour
                 audio = Resources.Load<AudioClip>("Audios/Tutorial/Tarea 4 Tutorial");
                 AudioManager.instance.playAudio(audio);
 
-                instructionsText.text = "Usa el botón sobre el gatillo para encender la linterna.";
                 break;
 
             case TutorialTask.leave:
+
                 audio = Resources.Load<AudioClip>("Audios/Tutorial/Tarea 4 Tutorial Completada");
                 audio2 = Resources.Load<AudioClip>("Audios/Tutorial/Finalizar Tutorial");
                 StartCoroutine(congratsAndNextTask(audio, audio2));
 
-                instructionsText.text = "¡Tutorial completado! Sal de la zona de tutorial para comenzar tu entrenamiento";
+                triggerSalir.SetActive(true);
                 break;
         }
     }
