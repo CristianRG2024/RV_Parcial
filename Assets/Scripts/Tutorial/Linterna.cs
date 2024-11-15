@@ -8,6 +8,7 @@ public class Linterna : MonoBehaviour
     public XRGrabInteractable grabInteract;
     private bool firstGrab;
     private bool firstUse;
+    GameObject luz;
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class Linterna : MonoBehaviour
 
         firstGrab = false;
         firstUse = false;
+
+        luz = transform.GetChild(0).gameObject;
     }
 
     public void onGrab()
@@ -35,5 +38,7 @@ public class Linterna : MonoBehaviour
             firstUse = true;
             TutorialTaskManager.Instance.CompleteTask();
         }
+
+        luz.SetActive(!luz.activeSelf);
     }
 }
