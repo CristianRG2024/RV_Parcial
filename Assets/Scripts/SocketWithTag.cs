@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class SocketWithTag : XRSocketInteractor
 {
     public string targetTag; // El tag que el objeto debe tener para ser seleccionado
+    private WaterHoseController waterController;
 
     protected override void Start()
     {
@@ -16,6 +17,8 @@ public class SocketWithTag : XRSocketInteractor
 
         // Listener para cuando un objeto es conectado
         selectEntered.AddListener(OnConnected);
+
+        waterController = GameObject.Find("Manguera").transform.GetChild(2).GetComponent<WaterHoseController>();
     }
 
     public override bool CanHover(IXRHoverInteractable interactable)
@@ -32,9 +35,6 @@ public class SocketWithTag : XRSocketInteractor
     {
         if (args.interactableObject.transform.CompareTag(targetTag))
         {
-            // Buscar el controlador de agua en la jerarquía del objeto conectado
-            WaterHoseController waterController = args.interactableObject.transform.root.GetComponentInChildren<WaterHoseController>();
-
             if (waterController != null)
             {
                 waterController.switchConectionState(); // Permitir disparar agua
@@ -49,9 +49,6 @@ public class SocketWithTag : XRSocketInteractor
 
     private void OnDisconnected(SelectExitEventArgs args)
     {
-        // Buscar el controlador de agua en la jerarquía del objeto desconectado
-        WaterHoseController waterController = args.interactableObject.transform.root.GetComponentInChildren<WaterHoseController>();
-
         if (waterController != null)
         {
             waterController.switchConectionState(); // Deshabilitar disparo de agua

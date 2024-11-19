@@ -6,15 +6,13 @@ public class WaterHoseController : MonoBehaviour
 {
     public XRGrabInteractable grabInteract;
 
-    private ParticleSystem waterParticles;
+    public ParticleSystem waterParticles;
     public AudioSource waterSound; // Opcional, para agregar sonido al usar la manguera
-    public bool isConected;
+    private bool isConected;
 
     void Start()
     {
-        grabInteract = transform.parent.GetComponent<XRGrabInteractable>();
-
-        waterParticles = GetComponent<ParticleSystem>();
+        grabInteract = GetComponent<XRGrabInteractable>();
 
         if (waterParticles != null)
         {
