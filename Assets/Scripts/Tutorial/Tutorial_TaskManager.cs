@@ -105,6 +105,8 @@ public class TutorialTaskManager : MonoBehaviour
                 audio2 = Resources.Load<AudioClip>("Audios/Tutorial/Finalizar Tutorial");
                 StartCoroutine(congratsAndNextTask(audio, audio2));
 
+                canvas.transform.GetChild(2).gameObject.SetActive(false);
+                canvas.transform.GetChild(3).gameObject.SetActive(true);
                 triggerSalir.SetActive(true);
                 break;
         }
