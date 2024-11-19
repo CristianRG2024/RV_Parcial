@@ -28,21 +28,20 @@ public class WaterHoseController : MonoBehaviour
     }
 
     public void onPressing() {
-        if (isConected) waterParticles.Play();
+        if (isConected) {
+            waterParticles.Play();
+            waterSound.Play();
+        }
     }
 
     public void onReleasing() {
-        //if (waterParticles.isPlaying)
-        //{
-        //    waterParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-
-        //    if (waterSound != null) waterSound.Stop();
-        //}
         waterParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        waterSound.Stop();
     }
 
     public void onThrow() {
         waterParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        waterSound.Stop();
     }
 
     public void switchConectionState() {

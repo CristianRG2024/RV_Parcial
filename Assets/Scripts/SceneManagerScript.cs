@@ -6,21 +6,17 @@ using UnityEngine.SceneManagement;
 public class SceneManagerScript : MonoBehaviour
 {
     public int numEscena;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene(numEscena);
         }
+    }
+
+    public void LoadScene(int num)
+    {
+        SceneManager.LoadScene(num);
     }
 }
