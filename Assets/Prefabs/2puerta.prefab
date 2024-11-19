@@ -488,6 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6482920113876839481}
   - component: {fileID: 4333649922230644412}
+  - component: {fileID: 5297973042938066887}
   m_Layer: 0
   m_Name: RescateCollider
   m_TagString: Untagged
@@ -531,6 +532,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3773384, y: 3.1411614, z: 4.554877}
   m_Center: {x: -0.20296097, y: 0.09368229, z: 0.12453914}
+--- !u!114 &5297973042938066887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890855607171815917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343164a671dccd34c989b9ec99112ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numEscena: 6
 --- !u!1 &7942521148880349193
 GameObject:
   m_ObjectHideFlags: 0
